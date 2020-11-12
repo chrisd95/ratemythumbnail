@@ -1,6 +1,6 @@
 
 import { style } from '@angular/animations';
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 // Decorator for angular to understand
 @Component({
@@ -10,11 +10,15 @@ import { Component } from '@angular/core';
 })
 
 export class PostCreateComponent{
-  enteredValue = '';
-  newPost = 'NO CONTENT';
+  enteredTitle = '';
+  enteredContent = '';
+  @Output() postCreated = new EventEmitter();
 
   onAddPost(){
-    this.newPost = this.enteredValue;
-    console.log(this.enteredValue)
+    const post = {
+      title: this.enteredTitle,
+      content:this.enteredContent
+    };
+    this.postCreated.emit(post);
   }
 }

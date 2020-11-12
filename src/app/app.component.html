@@ -1,5 +1,5 @@
-<div>
-  <h1>MY First APP</h1>
-</div>
-
-<app-post-create></app-post-create>
+<app-header></app-header>
+<main>
+  <app-post-create (postCreated)="onPostAdded($event)"></app-post-create>
+  <app-post-list [posts]="storedPosts"></app-post-list>
+</main>
